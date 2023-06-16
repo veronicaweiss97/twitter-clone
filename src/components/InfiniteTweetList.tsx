@@ -8,7 +8,7 @@ import { IconHoverEffect } from './IconHoverEffect'
 type InfiniteTweetListProps = {
     isLoading: boolean
     isError: boolean
-    hasMore: boolean
+    hasMore: boolean | undefined
     fetchNewTweets: () => Promise<unknown>
     tweets?: Tweet[]
 }
@@ -84,12 +84,11 @@ function HeartButton({likedByMe, likeCount}: HeartButtonProps) {
          </div>
     }
     return <button 
-        className={`group items-center gap-1 self-start flex transition-colors duration-200 ${likedByMe ? "text-red-500" : "text-gray-500 hover:text-red-500 focus-visible:text-red-500"} `}>
+        className={`group mb-1 -ml-2 mt-1 flex items-center gap-3 self-start transition-colors duration-200 ${likedByMe ? "text-red-500" : "text-gray-500 hover:text-red-500 focus-visible:text-red-500"} `}>
             <IconHoverEffect red>
                 <HeartIcon className={`transition-colors duration-200 ${likedByMe ? "fill-red-500" : "fill-gray-500 group-hover:fill-red-500 group-focus-visible:fill-red-500"}`}/>
-                <span>{likeCount}</span>
             </IconHoverEffect>
-          
+            <span>{likeCount}</span>
          </button>
 
 }
